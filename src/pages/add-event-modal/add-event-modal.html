@@ -1,0 +1,78 @@
+<!--
+  Generated template for the AddEventModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="primary">
+        <ion-buttons start>
+          <button ion-button icon-only (click)="cancel()">
+            <ion-icon name="close"></ion-icon>
+          </button>
+        </ion-buttons>
+        <ion-title>Add</ion-title>
+      </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list padding>
+      <!-- title -->
+        <ion-item>
+          <ion-input type="text" placeholder="Title" [(ngModel)]="eventTitle" name="eventTitle"></ion-input>
+        </ion-item>
+    
+        <!-- notes -->
+        <ion-item>
+          <ion-textarea placeholder="Notes" [(ngModel)]="eventNote" name="eventNote" rows="3"></ion-textarea>
+        </ion-item>
+    
+
+        <!-- Date -->
+        <ion-item>
+          <ion-label>Date</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="eventDate" [min]="minDate" name="eventDate"></ion-datetime>
+        </ion-item>
+
+        <!-- start time -->
+        <ion-item>
+          <ion-label>Start</ion-label>
+          <ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm" [(ngModel)]="eventStart"  name="eventStart"></ion-datetime>
+        </ion-item>
+    
+        <!-- end time -->
+        <ion-item>
+          <ion-label>End</ion-label>
+          <ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm" [(ngModel)]="eventEnd" name="eventEnd"></ion-datetime>
+        </ion-item>
+    
+        <!-- room select -->
+        <ion-item>
+          <ion-label>Select Room</ion-label>
+          <ion-select [(ngModel)]="eventRoom" name="eventRoom">
+            <ion-option (ionSelect)="optionSelected($event)" *ngFor="let room of rooms$ | async" [value]="room">{{room.name}} </ion-option>
+          </ion-select>
+        </ion-item>
+    
+        <!-- block day -->
+        <!-- <ion-item>
+          <ion-label>Block Day</ion-label>
+          <ion-checkbox [(ngModel)]="event.blockDay" (ionChange)="blockDay($event.value)"></ion-checkbox>
+        </ion-item> -->
+    
+        <!-- full day option -->
+        <!-- <ion-item>
+          <ion-label>All Day?</ion-label>
+          <ion-checkbox [(ngModel)]="event.allDay" [disabled]="event.blockDay"></ion-checkbox>
+        </ion-item> -->
+
+        <!-- add button -->
+        <button ion-button block icon-left (click)="addEvent(eventTitle, eventNote, eventDate, eventStart, eventEnd, eventRoom)">
+        <ion-icon name="checkmark"></ion-icon> Add Event
+      </button>
+      </ion-list>
+
+</ion-content>
