@@ -60,5 +60,16 @@
   (onTimeSelected)="onTimeSelected($event)" 
   step="30">
   </calendar>
+
+
+<ion-list>
+    <ion-item *ngFor="let event of eventSource">
+      <h2>title: <strong>{{event?.title}}</strong> </h2>
+      <p>Note: <strong>{{event?.note}}</strong></p>
+      <p>Start: <strong>{{event?.startTime | date:'hh:mm'}}</strong></p>
+      <p>end: <strong>{{event?.endTime | date:'hh:mm'}}</strong></p>
+    </ion-item>
+  </ion-list>
+
   
 </ion-content>

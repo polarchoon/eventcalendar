@@ -32,21 +32,21 @@
     
 
         <!-- Date -->
-        <ion-item>
+        <!-- <ion-item>
           <ion-label>Date</ion-label>
           <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="eventDate" [min]="minDate" name="eventDate"></ion-datetime>
-        </ion-item>
+        </ion-item> -->
 
         <!-- start time -->
         <ion-item>
           <ion-label>Start</ion-label>
-          <ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm" [(ngModel)]="eventStart"  name="eventStart"></ion-datetime>
+          <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat="DD/MM/YYYY HH:mm" [(ngModel)]="eventStart" [min]="minDate" name="eventStart"></ion-datetime>
         </ion-item>
     
         <!-- end time -->
         <ion-item>
           <ion-label>End</ion-label>
-          <ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm" [(ngModel)]="eventEnd" name="eventEnd"></ion-datetime>
+          <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat="DD/MM/YYYY HH:mm" [(ngModel)]="eventEnd" [min]="minDate" name="eventEnd"></ion-datetime>
         </ion-item>
     
         <!-- room select -->
@@ -70,7 +70,7 @@
         </ion-item> -->
 
         <!-- add button -->
-        <button ion-button block icon-left (click)="addEvent(eventTitle, eventNote, eventDate, eventStart, eventEnd, eventRoom)">
+        <button ion-button block icon-left (click)="addEvent(eventTitle, eventNote, eventStart, eventEnd, eventRoom)">
         <ion-icon name="checkmark"></ion-icon> Add Event
       </button>
       </ion-list>

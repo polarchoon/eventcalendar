@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 import * as moment from 'moment';
 import { of } from "rxjs/observable/of";
 import { EventProvider } from '../../providers/event/event';
+
 /**
  * Generated class for the AddEventModalPage page.
  *
@@ -55,13 +56,12 @@ export class AddEventModalPage {
   addEvent(
     eventTitle: string,
     eventNote: string,
-    eventDate: string,
     eventStart: string,
     eventEnd: string,
     eventRoom: string
     ): void {
         this.eventProvider
-          .addEvent(eventTitle, eventNote, eventDate, eventStart, eventEnd, eventRoom)
+          .addEvent(eventTitle, eventNote, eventStart, eventEnd, eventRoom)
           .then(newEvent => {
         this.navCtrl.pop();
         console.log("added")

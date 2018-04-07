@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import firebase from 'firebase';
 
+
 /*
   Generated class for the EventProvider provider.
 
@@ -24,7 +25,6 @@ export class EventProvider {
   addEvent(
     eventTitle: string,
     eventNote: string,
-    eventDate: string,
     eventStart: string,
     eventEnd: string,
     eventRoom: string
@@ -33,7 +33,6 @@ export class EventProvider {
     return this.eventListRef.push({
       title: eventTitle,
       note: eventNote,
-      evdate:eventDate,
       startTime: eventStart,
       endTime: eventEnd,
       room:eventRoom

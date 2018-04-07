@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ActionSheetController, ModalController } from 'ionic-angular';
+import { EventProvider } from '../../providers/event/event';
 //import { NavController, ActionSheetController } from 'ionic-angular';
 //import { AddEventModalPage } from '../add-event-modal/add-event-modal';
 
@@ -24,9 +25,41 @@ export class HomePage {
     currentDate: new Date()
   };
   
-  constructor(public navCtrl: NavController,public actionSheetCtrl: ActionSheetController, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController,public actionSheetCtrl: ActionSheetController, public modalCtrl: ModalController, public eventProvider: EventProvider) {
 
   }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad HomePage');
+
+    //     let eventData = data;
+    //     eventData.startTime = new Date(data.startTime);
+    //     eventData.endTime = new Date(data.endTime);
+    //     let events = this.eventSource;
+    //     events.push(eventData);
+    //     this.eventSource = [];
+    //     setTimeout(() => {
+    //       this.eventSource = events;
+
+    this.eventProvider.getEventList().on("value", eventListSnapshot => {
+    this.eventSource = [];
+    eventListSnapshot.forEach(snap => {
+    this.eventSource.push({
+      
+    id: snap.key,
+    title: snap.val().title,
+    note: snap.val().note,
+    startTime: new Date(snap.val().startTime),
+    endTime: new Date(snap.val().endTime),
+    room: snap.val().room
+      });
+      return false;
+      });
+    
+    });
+     console.log("source " + this.eventSource);
+  }
+
 
   onViewTitleChanged(title) {
     this.viewTitle = title;
